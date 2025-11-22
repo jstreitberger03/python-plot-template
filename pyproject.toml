@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Minimal Matplotlib style template with Paul Tol color palettes."
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "GPL-3.0-or-later" }
+license = "GPL-3.0-or-later"
 authors = [{ name = "Julian Streitberger" }]
 dependencies = [
     "matplotlib>=3.10",
@@ -17,6 +17,9 @@ dev = ["ruff>=0.7"]
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["plot_template"]
 
 [tool.ruff]
 line-length = 88
