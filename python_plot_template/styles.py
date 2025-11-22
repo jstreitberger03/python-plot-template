@@ -1,8 +1,8 @@
 """
-Lightweight Matplotlib style helper using Paul Tol's color schemes.
+Style system for python-plot-template.
 
-Call apply_style() once at program start to set a clean "blank" theme with
-densely dotted y-axis major grid lines and a discrete Tol palette.
+apply_template() sets a clean blank theme with Paul Tol palettes and dotted
+y-major grid lines.
 """
 
 from __future__ import annotations
@@ -38,20 +38,13 @@ PAUL_TOL_PALETTES: Dict[str, List[str]] = {
 }
 
 
-def apply_style(palette: str = "bright", font_size: int = 11) -> None:
+def apply_template(palette: str = "bright", font_size: int = 11) -> None:
     """
-    Configure Matplotlib with a minimal theme and Tol color cycle.
-
-    Parameters
-    ----------
-    palette : str
-        Palette key from PAUL_TOL_PALETTES.
-    font_size : int
-        Base font size for text elements.
+    Configure Matplotlib with the minimal template style.
     """
     colors = PAUL_TOL_PALETTES.get(palette, PAUL_TOL_PALETTES["bright"])
 
-    plt.style.use("default")  # start from a clean base
+    plt.style.use("default")
     plt.rcParams.update(
         {
             "axes.prop_cycle": cycler(color=colors),
@@ -85,7 +78,7 @@ def style_context(palette: str = "bright", font_size: int = 11):
     Context manager to temporarily apply the template style.
     """
     with plt.rc_context():
-        apply_style(palette=palette, font_size=font_size)
+        apply_template(palette=palette, font_size=font_size)
         yield
 
 

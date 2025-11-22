@@ -1,11 +1,16 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from plot_template import apply_style, palette_colors
+from python_plot_template import (
+    apply_template,
+    palette_colors,
+    save_plot,
+    set_labels,
+)
 
 
 def main() -> None:
-    apply_style(palette="bright", font_size=12)
+    apply_template(palette="bright", font_size=12)
 
     x = np.linspace(0, 2 * np.pi, 200)
     signals = [
@@ -18,12 +23,10 @@ def main() -> None:
     for (label, y), color in zip(signals, palette_colors("bright"), strict=False):
         ax.plot(x, y, label=label, color=color, linewidth=2.0)
 
-    ax.set_title("Minimal Tol-styled plot")
-    ax.set_xlabel("x")
-    ax.set_ylabel("f(x)")
+    set_labels("Minimal Tol-styled plot", "x", "f(x)", ax=ax)
     ax.legend(loc="best")
 
-    fig.savefig("example_plot.png", dpi=200)
+    save_plot("example_plot.png", dpi=200, fig=fig)
     plt.show()
 
 

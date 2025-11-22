@@ -1,43 +1,87 @@
 ## Python Plot Template
 
-Schnelles, schlichtes Matplotlib-Template mit Paul Tol Farbpaletten. Nutzt einen blanken Hintergrund, reduzierte Achsen, und dicht gepunktete Gitterlinien auf der y-Achse.
+A lightweight Matplotlib template package using Paul Tol color palettes. It sets a clean blank theme with reduced axes and densely dotted y-major gridlines.
 
 ### Features
-- Paul Tol colorblind-sichere Paletten (`bright`, `muted`)
-- Weißer Hintergrund, reduzierte Achsen (keine Top/Right-Spines)
-- Dicht gepunktete y-Majorgridlines, dezente Achsenfarbe
-- Kontextmanager für temporären Stil
+- `apply_template()` sets the base Matplotlib style
+- Paul Tol colorblind-safe palettes (`bright`, `muted`) via `palette_colors`
+- Utils: `save_plot(filename, dpi=300)`, `set_labels(title, xlabel, ylabel)`
+- `style_context` context manager for temporary styling
 
 ### Installation
-Keine Abhängigkeiten außer `matplotlib` und `numpy` für das Beispiel.
-
+```bash
+pip install -e '.[dev]'  # for local development with Ruff
+```
+Runtime only:
 ```bash
 pip install matplotlib numpy
 ```
 
-### Nutzung
+### Usage
 ```python
-from plot_template import apply_style, style_context, palette_colors
 import matplotlib.pyplot as plt
+from python_plot_template import apply_template, palette_colors, save_plot, set_labels
 
-apply_style(palette="bright", font_size=12)
+apply_template(palette="bright", font_size=12)
 fig, ax = plt.subplots()
 for color in palette_colors("bright"):
     ax.plot([0, 1, 2], [0, 1, 0], color=color)
-ax.set_ylabel("Beispiel")
+
+set_labels("Example plot", "x", "y", ax=ax)
+save_plot("example.png", dpi=300, fig=fig)
 plt.show()
 ```
 
-Oder temporär:
+Temporary style:
 ```python
+import matplotlib.pyplot as plt
+from python_plot_template import style_context
+
 with style_context("muted"):
     plt.plot([0, 1], [0, 1])
     plt.show()
 ```
 
-### Beispiel
-Das mitgelieferte Beispiel zeigt ein erstes Beispiel:
+### Example script
 ```bash
 python example_plot.py
 ```
-Dies erzeugt `example_plot.png` mit dem Blank-Theme und Paul Tol Farben.
+This creates `example_plot.png` with the blank theme and Paul Tol colors.
+
+Contents of `example_plot.py`:
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+from python_plot_template import (
+    apply_template,
+    palette_colors,
+    save_plot,
+    set_labels,
+)
+
+
+def main() -> None:
+    apply_template(palette="bright", font_size=12)
+
+    x = np.linspace(0, 2 * np.pi, 200)
+    signals = [
+        ("sine", np.sin(x)),
+        ("cosine", np.cos(x)),
+        ("sine*exp", np.sin(x) * np.exp(-0.3 * x)),
+    ]
+
+    fig, ax = plt.subplots()
+    for (label, y), color in zip(signals, palette_colors("bright"), strict=False):
+        ax.plot(x, y, label=label, color=color, linewidth=2.0)
+
+    set_labels("Minimal Tol-styled plot", "x", "f(x)", ax=ax)
+    ax.legend(loc="best")
+
+    save_plot("example_plot.png", dpi=200, fig=fig)
+    plt.show()
+
+
+if __name__ == "__main__":
+    main()
+```
