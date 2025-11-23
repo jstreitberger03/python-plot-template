@@ -15,6 +15,7 @@ def save_plot(filename: str, dpi: int = 300, fig: Optional[plt.Figure] = None) -
     Save the given Matplotlib figure (or current figure) to disk.
     """
     target = Path(filename)
+    target.parent.mkdir(parents=True, exist_ok=True)
     fig_to_save = fig if fig is not None else plt.gcf()
     fig_to_save.savefig(target, dpi=dpi)
     return target

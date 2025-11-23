@@ -85,3 +85,18 @@ def main() -> None:
 if __name__ == "__main__":
     main()
 ```
+
+### More examples
+- `examples/line_and_scatter.py` → saves `examples/line_and_scatter.png` (bright palette)
+- `examples/muted_bar_chart.py` → saves `examples/muted_bar_chart.png` (muted palette)
+
+Run them with:
+```bash
+python examples/line_and_scatter.py
+python examples/muted_bar_chart.py
+```
+
+### Tests
+```bash
+pytest
+```

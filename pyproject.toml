@@ -10,9 +10,24 @@ dependencies = [
     "matplotlib>=3.10",
     "numpy>=1.26",
 ]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Visualization",
+    "Topic :: Software Development :: Libraries",
+]
+
+[project.urls]
+Homepage = "https://github.com/jstreitberger03/python-plot-template"
+Repository = "https://github.com/jstreitberger03x/python-plot-template"
 
 [project.optional-dependencies]
-dev = ["ruff>=0.7"]
+dev = ["ruff>=0.7", "pytest>=8.3"]
 
 [build-system]
 requires = ["setuptools>=61.0"]
