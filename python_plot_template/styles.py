@@ -8,7 +8,7 @@ y-major grid lines.
 from __future__ import annotations
 
 from contextlib import contextmanager
-from typing import Dict, Iterable, List
+from typing import Dict, Iterable, List, Optional
 
 import matplotlib.pyplot as plt
 from matplotlib import cycler
@@ -38,7 +38,12 @@ PAUL_TOL_PALETTES: Dict[str, List[str]] = {
 }
 
 
-def apply_template(palette: str = "bright", font_size: int = 11) -> None:
+def apply_template(
+    palette: str = "bright",
+    font_size: int = 11,
+    font_family: Optional[str] = None,
+    mathtext_fontset: Optional[str] = "cm",
+) -> None:
     """
     Configure Matplotlib with the minimal template style.
     """
@@ -70,6 +75,10 @@ def apply_template(palette: str = "bright", font_size: int = 11) -> None:
             "figure.autolayout": True,
         }
     )
+    if font_family:
+        plt.rcParams["font.family"] = [font_family, "DejaVu Sans", "sans-serif"]
+    if mathtext_fontset:
+        plt.rcParams["mathtext.fontset"] = mathtext_fontset
 
 
 @contextmanager

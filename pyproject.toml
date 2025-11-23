@@ -2,7 +2,7 @@
 name = "python-plot-template"
 version = "0.1.0"
 description = "Minimal Matplotlib style template with Paul Tol color palettes."
-readme = "README.md"
+readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.10"
 license = "GPL-3.0-or-later"
 authors = [{ name = "Julian Streitberger" }]
@@ -10,6 +10,7 @@ dependencies = [
     "matplotlib>=3.10",
     "numpy>=1.26",
 ]
+keywords = ["matplotlib", "plotting", "style", "theme", "visualization", "color palettes"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -23,8 +24,10 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/jstreitberger03/python-plot-template"
-Repository = "https://github.com/jstreitberger03x/python-plot-template"
+Homepage = "https://github.com/julianstreitberger/python-plot-template"
+Repository = "https://github.com/julianstreitberger/python-plot-template"
+Issues = "https://github.com/julianstreitberger/python-plot-template/issues"
+Documentation = "https://github.com/julianstreitberger/python-plot-template#readme"
 
 [project.optional-dependencies]
 dev = ["ruff>=0.7", "pytest>=8.3"]
@@ -32,6 +35,9 @@ dev = ["ruff>=0.7", "pytest>=8.3"]
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+license-files = ["LICENSE"]
 
 [tool.setuptools.packages.find]
 include = ["python_plot_template"]
