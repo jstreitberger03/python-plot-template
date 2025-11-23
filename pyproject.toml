@@ -24,10 +24,10 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/julianstreitberger/python-plot-template"
-Repository = "https://github.com/julianstreitberger/python-plot-template"
-Issues = "https://github.com/julianstreitberger/python-plot-template/issues"
-Documentation = "https://github.com/julianstreitberger/python-plot-template#readme"
+Homepage = "https://github.com/jstreitberger03/python-plot-template"
+Repository = "https://github.com/jstreitberger03/python-plot-template"
+Issues = "https://github.com/jstreitberger03/python-plot-template/issues"
+Documentation = "https://github.com/jstreitberger03/python-plot-template#readme"
 
 [project.optional-dependencies]
 dev = ["ruff>=0.7", "pytest>=8.3"]

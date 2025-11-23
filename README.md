@@ -1,4 +1,4 @@
-![CI](https://github.com/julianstreitberger/python-plot-template/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/jstreitberger03/python-plot-template/actions/workflows/ci.yml/badge.svg)
 
 ## Python Plot Template
 
@@ -32,7 +32,7 @@ from python_plot_template import (
     set_limits,
 )
 
-apply_template(palette="bright", font_size=12)  # set font_family="..." if installed
+apply_template(palette="bright", font_size=12)
 fig, ax = plt.subplots()
 for color in palette_colors("bright"):
     ax.plot([0, 1, 2], [0, 1, 0], color=color)
@@ -104,6 +104,9 @@ if __name__ == "__main__":
 | --- | --- | --- |
 | Line & Scatter (bright) | ![Line & Scatter](examples/line_and_scatter.png) | `python examples/line_and_scatter.py` |
 | Muted Bar Chart | ![Muted Bar](examples/muted_bar_chart.png) | `python examples/muted_bar_chart.py` |
+| Scatter with Regression | ![Scatter Regression](examples/scatter_regression.png) | `python examples/scatter_regression.py` |
+| Stacked Area | ![Stacked Area](examples/stacked_area.png) | `python examples/stacked_area.py` |
+| Correlation Heatmap | ![Heatmap Corr](examples/heatmap_corr.png) | `python examples/heatmap_corr.py` |
 
 Make them all at once:
 ```bash
